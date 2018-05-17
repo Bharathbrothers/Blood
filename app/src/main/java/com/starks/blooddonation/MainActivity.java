@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
             mAuth.signOut();
             Intent intent = new Intent(this,Login.class);
             startActivity(intent);
-           // finish();
+            // finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -94,8 +94,11 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+
         } else if (id == R.id.nav_gallery) {
 
+            Intent intent = new Intent(this,FeedActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

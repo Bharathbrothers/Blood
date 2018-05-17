@@ -3,78 +3,84 @@ package com.starks.blooddonation;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FeedActivity extends AppCompatActivity {
 
-
+    Button view;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    List<Postfeed> list;
+    RecyclerView recyclerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-
-        recycle = (RecyclerView) findViewById(R.id.recycle);
+        view = (Button) findViewById(R.id.view);
+        recyclerview = (RecyclerView) findViewById(R.id.rview);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("message");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                list = new ArrayList<FireModel>();
-                for(DataSnapshot dataSnapshot1 :dataSnapshot.getChildren()){
-
-                    FireModel value = dataSnapshot1.getValue(FireModel.class);
-                    FireModel fire = new FireModel();
-                    String name = value.getName();
-                    String address = value.getAddress();
-                    String email = value.getEmail();
-                    fire.setName(name);
-                    fire.setEmail(email);
-                    fire.setAddress(address);
-                    list.add(fire);
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("Hello", "Failed to read value.", error.toException());
-            }
-        });
-
+        myRef = database.getReference();
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        list = new ArrayList<>();
+                        // StringBuffer stringbuffer = new StringBuffer();
+                        for(DataSnapshot dataSnapshot1 :dataSnapshot.getChildren()){
 
+                            Postfeed userdetails = dataSnapshot1.getValue(Postfeed.class);
+                            Postfeed listdata = new Postfeed();
+                            String name=userdetails.getBloodType();
+                            String email=userdetails.getHospitalLoc();
+                            String address=userdetails.getCity();
+                            String desc=userdetails.getDescription();
+                            String cont=userdetails.getCinfo();
+                            listdata.setBloodType(name);
+                            listdata.setHospitalLoc(email);
+                            listdata.setCity(address);
+                            listdata.setDescription(desc);
+                            listdata.setCinfo(cont);
+                            list.add(listdata);
+                            // Toast.makeText(MainActivity.this,""+name,Toast.LENGTH_LONG).show();
 
-                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(list,MainActivity.this);
-                RecyclerView.LayoutManager recyce = new GridLayoutManager(MainActivity.this,2);
-                /// RecyclerView.LayoutManager recyce = new LinearLayoutManager(MainActivity.this);
-                // recycle.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
-                recycle.setLayoutManager(recyce);
-                recycle.setItemAnimator( new DefaultItemAnimator());
-                recycle.setAdapter(recyclerAdapter);
+                        }
 
+                        RecyclerAdapter recycler = new RecyclerAdapter(list);
+                        RecyclerView.LayoutManager layoutmanager = new LinearLayoutManager(FeedActivity.this);
+                        recyclerview.setLayoutManager(layoutmanager);
+                        recyclerview.setItemAnimator( new DefaultItemAnimator());
+                        recyclerview.setAdapter(recycler);
 
+                    }
 
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        //  Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
 
             }
         });
+
+
     }
 }

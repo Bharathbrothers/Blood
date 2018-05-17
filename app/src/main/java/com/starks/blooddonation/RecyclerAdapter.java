@@ -1,77 +1,58 @@
 package com.starks.blooddonation;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
 /**
- * Created by RCP on 5/8/2018.
+ * Created by RCP on 5/16/2018.
  */
 
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHolder>{
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHoder>{
+    List<Postfeed> listdata;
 
-    List<FireModel> list;
-    Context context;
-
-    public RecyclerAdapter(List<FireModel> list, Context context) {
-        this.list = list;
-        this.context = context;
+    public RecyclerAdapter(List<Postfeed> listdata) {
+        this.listdata = listdata;
     }
 
     @Override
-    public MyHoder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card,parent,false);
 
-        View view = LayoutInflater.from(context).inflate(R.layout.card,parent,false);
-        MyHoder myHoder = new MyHoder(view);
-
-
-        return myHoder;
+        MyHolder myHolder = new MyHolder(view);
+        return myHolder;
     }
 
-    @Override
-    public void onBindViewHolder(MyHoder holder, int position) {
-        FireModel mylist = list.get(position);
-        holder.name.setText(mylist.getName());
-        holder.email.setText(mylist.getEmail());
-        holder.address.setText(mylist.getAddress());
+
+    public void onBindViewHolder(MyHolder holder, int position) {
+        Postfeed data = listdata.get(position);
+        holder.vname.setText(data.getBloodType());
+        holder.vemail.setText(data.getHospitalLoc());
+        holder.vaddress.setText(data.getCity());
     }
 
     @Override
     public int getItemCount() {
-
-        int arr = 0;
-
-        try{
-            if(list.size()==0){
-
-                arr = 0;
-
-            }
-            else{
-
-                arr=list.size();
-            }
-
-
-
-        }catch (Exception e){
-
-
-
-        }
-
-        return arr;
-
+        return listdata.size();
     }
 
-    class MyHoder extends RecyclerView.ViewHolder{
-        TextView name,email,address;
 
+    class MyHolder extends RecyclerView.ViewHolder{
+        TextView vname , vaddress,vemail;
 
-        public MyHoder(View itemView) {
+        public MyHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.vname);
-            email= (TextView) itemView.findViewById(R.id.vemail);
-            address= (TextView) itemView.findViewById(R.id.vaddress);
+            vname = (TextView) itemView.findViewById(R.id.vaddress1);
+            vemail = (TextView) itemView.findViewById(R.id.vaddress2);
+            vaddress = (TextView) itemView.findViewById(R.id.vaddress3);
 
         }
     }
+
 
 }
