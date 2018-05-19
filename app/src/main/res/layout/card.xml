@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
@@ -11,6 +12,7 @@
         android:layout_gravity="center"
         android:layout_margin="3dp"
         android:elevation="3dp"
+
         card_view:cardCornerRadius="5dp"
         card_view:cardElevation="4dp">
 
@@ -18,52 +20,159 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/vaddress1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Blood Group"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:id="@+id/layouttype">
 
-            <TextView
-                android:id="@+id/vaddress2"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_below="@+id/vaddress1"
-                android:text="Hospital and Loc"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/vaddress01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Blood Group"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic" />
+                <TextView
+                    android:id="@+id/vaddress1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Blood Group"
+                    android:textAlignment="center"
+                    android:textColor="#c50707"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/vaddress3"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/vaddress2"
-                android:text="City" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/vaddress4"
+            <LinearLayout
+                android:id="@+id/layout2"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_below="@+id/vaddress3"
-                android:layout_centerHorizontal="true"
-                android:layout_weight="1"
-                android:text="Contact Info" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layouttype"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/vaddress5"
+                <TextView
+                    android:id="@+id/vaddress03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Person's Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:layout_marginRight="3dp"/>
+
+                <TextView
+                    android:id="@+id/vaddress3"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text=" Your Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout3"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:text="Description" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/vaddress02"
+                    android:layout_width="114dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/vaddress5"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="Hosp and Loc"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:typeface="normal"
+                    android:layout_marginRight="3dp"/>
+
+                <TextView
+                    android:id="@+id/vaddress2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/vaddress5"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="Hospital and Loc"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/vaddress04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:text="Contact Info" />
+                <TextView
+                    android:id="@+id/vaddress4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:text="Contact Info"
+                    android:autoLink="phone"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:id="@+id/layout5"
+                android:layout_below="@+id/layout4">
+
+                <TextView
+                    android:id="@+id/vaddress05"
+                    android:layout_width="79dp"
+                    android:layout_height="20dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginRight="3dp"
+                    android:text="Description" />
+                <TextView
+                    android:id="@+id/vaddress5"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Description" />
+            </LinearLayout>
+
+
+
+
+
+
+
 
         </RelativeLayout>
 

@@ -34,6 +34,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHold
         holder.vname.setText(data.getBloodType());
         holder.vemail.setText(data.getHospitalLoc());
         holder.vaddress.setText(data.getCity());
+        holder.vcont.setText(data.getCinfo());
+        holder.vdesc.setText(data.getDescription());
     }
 
     @Override
@@ -43,13 +45,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHold
 
 
     class MyHolder extends RecyclerView.ViewHolder{
-        TextView vname , vaddress,vemail;
+        TextView vname,vaddress,vemail,vcont,vdesc;
 
         public MyHolder(View itemView) {
             super(itemView);
-            vname = (TextView) itemView.findViewById(R.id.vaddress1);
-            vemail = (TextView) itemView.findViewById(R.id.vaddress2);
-            vaddress = (TextView) itemView.findViewById(R.id.vaddress3);
+            vname = itemView.findViewById(R.id.vaddress1);
+            vemail =  itemView.findViewById(R.id.vaddress2);
+            vaddress =  itemView.findViewById(R.id.vaddress3);
+            vcont = itemView.findViewById(R.id.vaddress4);
+            vdesc = itemView.findViewById(R.id.vaddress5);
 
         }
     }

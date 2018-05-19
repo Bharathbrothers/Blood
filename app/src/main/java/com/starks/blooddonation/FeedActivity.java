@@ -1,12 +1,11 @@
 package com.starks.blooddonation;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
 
-    Button view;
+
     FirebaseDatabase database;
     DatabaseReference myRef;
     List<Postfeed> list;
@@ -29,14 +28,12 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-        view = (Button) findViewById(R.id.view);
         recyclerview = (RecyclerView) findViewById(R.id.rview);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
 
 
                 myRef.addValueEventListener(new ValueEventListener() {
@@ -79,8 +76,7 @@ public class FeedActivity extends AppCompatActivity {
                 });
 
             }
-        });
 
 
-    }
+
 }

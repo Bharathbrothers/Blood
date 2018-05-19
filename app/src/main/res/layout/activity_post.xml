@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/colorPrimaryDark"
+    android:background="#2874A6"
     android:fitsSystemWindows="true"
     tools:context="com.starks.blooddonation.PostActivity"
     >
@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            android:text="Post an Request"
+            android:text="Post a Request"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="enter your blood-type"
+                android:hint="enter your blood-type (A,B,O+ etc.)"
                 android:inputType="text"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="enter your city"
+                android:hint="enter your name"
                 android:inputType="text"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="Addtionial Description"
+                android:hint="Description(Urgency,needed before etc)"
                 android:inputType="text"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -111,18 +111,19 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:hint="Contact Information"
-                android:inputType="text"
+                android:inputType="phone"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
+
         <Button
             android:id="@+id/submit"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@null"
+            android:background="@color/colorAccent"
             android:text="submit >>"
-            android:textColor="@color/colorAccent" />
+            android:textColor="#D0D3D4" />
 
     </LinearLayout>
 

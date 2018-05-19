@@ -1,6 +1,7 @@
 package com.starks.blooddonation;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -28,7 +29,7 @@ public class PostActivity extends AppCompatActivity {
         editText4 = (EditText) findViewById(R.id.desc);
         editText5 = (EditText) findViewById(R.id.contact);
         submit = (Button) findViewById(R.id.submit);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         db = FirebaseDatabase.getInstance().getReference();
 
         submit.setOnClickListener(new View.OnClickListener() {
